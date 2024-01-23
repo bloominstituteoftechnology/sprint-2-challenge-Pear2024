@@ -5,12 +5,57 @@
   <title>Web Sprint 2 Challenge</title>
   <script id="challenge">
     // 👉 CHALLENGE 1
-    function profileActivation(profile, reason) {
 
+ 
+
+    function profileActivation(profile,reason) {
+      result = {}
+
+     if(profile.active === true && reason === undefined) {
+
+      result = "confirm status manually"
+       
+     } else if (profile.active === false && reason !== "") {
+          result = {
+            active : true
+          }
+
+     } else if (profile.active === true && reason !== "") {
+        result = {
+            active: false,
+            reason:"because"
+          }
+     }
+     return result;
+    
     }
+ 
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
+      //grid = ["","",""],["","",""],["","",""];
+      result = "" ;
+     // console.log(grid[x][y])
+    if (x<1 || x > 3 || y < 1 || y > 3) {
+      result = "invalid coordinates"
+    } else {
+      let x = 1;
+      let y = 1;
+      vX = 1;
+      vY = 1;
+     for (let vX in grid) {
+        for  (let vY in grid) {
+          if (grid[vX][vY] === "🟦") {
+            result = "🟦 🥳"
+          } else if (grid[vX][vY] === "🟥") {
+            result = "🟥 💀"
+          }
+        }    
+     }
+         
+    }
+      return result
+      console.log(result)
 
     }
 
