@@ -33,50 +33,123 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-      //grid = ["","",""],["","",""],["","",""];
-      result = "" ;
-     // console.log(grid[x][y])
-    if (x<1 || x > 3 || y < 1 || y > 3) {
-      result = "invalid coordinates"
-    } else {
-      let x = 1;
-      let y = 1;
-      vX = 1;
-      vY = 1;
-     for (let vX in grid) {
-        for  (let vY in grid) {
-          if (grid[vX][vY] === "🟦") {
-            result = "🟦 🥳"
-          } else if (grid[vX][vY] === "🟥") {
-            result = "🟥 💀"
-          }
-        }    
-     }
-         
-    }
-      return result
-      console.log(result)
+      let result;
+      
+      if(x < 1 || y < 1 || x > 3 || y > 3) {
+        result = "invalid coordinates"
+      } else {
+       if (grid.at(y-1)[x-1] === "🟦" ) {
+         result = "🟦 🥳"
+        
+       } else if (grid.at(y-1)[x-1] === "🟥") {
+        result = "🟥 💀"
+       }
+             
+      }
+    return result
 
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
 
+
+      let result
+
+  for (let key in obj) {
+  //console.log(`${key} :   ${obj[key]}`)
+  if(obj[key] === null) {
+    delete obj[key]
+    result = obj
+  } else if (key.length > 9) {
+    result = "shorten all prop names to 9 chars or less"
+  } else if (obj[key] === 0) {
+    obj[key] = false
+    result = obj
+  } else if (obj[key] === 1) {
+    obj[key] = true
+    result = obj
+  }
+}
+
+ return result
     }
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
-
+      let result
+      let textArray = []
+      let replaceX = "x"
+      let textMerge = ""
+      
+      str = text.split(',')
+      str2 = text.split(' ')
+      
+      textArray = str2
+      let textReplace = ""
+      
+      for (let i in textArray) {
+      //  console.log(textArray[i])
+        for(j in forbidden) {
+        if(textArray[i] === forbidden[j]) {
+        //  console.log(`TextArray ==> ${textArray[i]} and forbidden lenge ==> ${forbidden[j].length}`)
+         // console.log(`length ==> ${forbidden.length}`);
+         
+         let xString = 'x'.repeat(forbidden[j].length);
+            replaceX = xString
+           textArray[i] = replaceX
+     
+        }
+       
+      }
+      textMerge = textArray.join(" ")
+    }
+    //  console.log(textMerge)
+      result = textMerge
+      return result
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+      
+      let result
+      str = ""
+      str = num.split("")
+      numMerge1 = ""
+      numMerge2 = ""
+      numMerge3 = ""
 
+      for(let i=0;i<= 2;i++) {
+      if(i===0) {
+      numMerge1 += "(" + str[i]
+      } else {
+      numMerge1 += str[i]
+      }
+      }
+      numMerge1 = numMerge1 + ")"
+
+      for(let j=3;j<=5;j++) {
+        numMerge2 += str[j]
+      }
+      for(let k=6;k<=9;k++) {
+        numMerge3 += str[k]
+      }
+
+      result = (`${numMerge1} ${numMerge2}-${numMerge3}`)
+      console.log(result)
+      //result = "(123) 456-7890"
+      return result
+
+
+  
+      
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
-
+      let Total = Math.random() * 6
+      console.log(Total)
+      return Total
     }
 
     // 🧪 DO NOT make any changes below this line ===================
